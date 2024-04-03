@@ -1,4 +1,4 @@
-class Insertion():
+class Bulles():
     def __init__(self, liste):
         self.list = liste
     
@@ -27,6 +27,6 @@ class Insertion():
 
 
 
-insert = Insertion([5,3,2,1,4])
+bulles = Bulles([5,3,2,1,4])
 # insert.check_numbers()
-insert.sorting()
+bulles.sorting()
