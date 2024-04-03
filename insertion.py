@@ -9,11 +9,12 @@ class Insertion():
     def sorting(self):
         print ("Initial list : " ,self.list)
         for index ,numbers in enumerate(self.list):
-            for i in range(len(self.list)):
-                self.check_numbers(0,1)
-                self.check_numbers(1,2)
-                self.check_numbers(2,3)
-                self.check_numbers(3,4)
+            self.check_numbers(0,1)
+            # index += 1
+            # print(index)
+            self.check_numbers(1,2)
+            self.check_numbers(2,3)
+            self.check_numbers(3,4)
                 # if self.list[0] > self.list[1]:
                 #     self.list [0] ,self.list[1] = self.list[1] ,self.list[0]
                 # elif self.list[1] > self.list[2]:
@@ -26,6 +27,6 @@ class Insertion():
 
 
 
-insert = Insertion([5,2,3,1,4])
+insert = Insertion([5,3,2,1,4])
 # insert.check_numbers()
 insert.sorting()
