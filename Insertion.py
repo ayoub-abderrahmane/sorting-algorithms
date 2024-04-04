@@ -1,19 +1,23 @@
 class Insertion():
     def __init__(self, liste):
         self.list = liste
+        self.len_list = len(self.list)
     
-    def check_numbers(self, first_value, temporary_key):
-        if self.liste[first_value] < self.liste[temporary_key]:
-            self.list[second_value]
+    def check_numbers(self):
+        pass
 
     def sorting(self):
         print ("Initial list : " ,self.list)
-        for index, numbers in enumerate(self.list):
-            for i in range(len(self.list)):
-                pass
-        # print(self.list)
+        for i in range(self.len_list):
+            key = self.list[i]
+            j = i - 1
+            while j >= 0 and self.list[j] > key:
+                self.list[j+1] = self.list[j]
+                j -= 1
+                self.list[j+1] = key
+        print(self.list)
 
 
 
-insert = Insertion([5,3,2,1,4])
+insert = Insertion([5,3,2,1,4,9,6,8,10,7])
 insert.sorting()
