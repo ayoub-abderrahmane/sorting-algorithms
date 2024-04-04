@@ -1,4 +1,8 @@
-listes = [4, 13, 11, 6, 9, 7 ,10, 12, 1, 5, 15, 3, 8, 14,2]
+
+import random
+
+random_numbers = random.sample(range(1, 101), 50)
+listes = random_numbers
 
 def merge(left, right):
     result = []
