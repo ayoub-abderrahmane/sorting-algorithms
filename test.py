@@ -1,58 +1,88 @@
-import tkinter
 from sorting import *
+import colorsys 
+import pygame
+import sys
+import random
 
-import colorsys
-import math
-app=tkinter.Tk()
+# Initialisation de Pygame
+pygame.init()
 
-app.title("mélangeur")
-app.geometry('1000x600')
-canvas = tkinter.Canvas(app, width=400, height=400)
-canvas.pack()
+# Définition des couleurs
 
-def generate_colors(num_colors):
-    # Générer les couleurs dans un spectre de couleur (arc-en-ciel)
-    colors = [colorsys.hsv_to_rgb(h, 1.0, 1.0) for h in [(i / num_colors) for i in range(num_colors)]]
-    return colors
+# Dimensions de la fenêtre
+WINDOW_WIDTH = 800
+WINDOW_HEIGHT = 600
 
-def draw_circle(canvas, center_x, center_y, radius, num_colors,func):
-    colors = generate_colors(num_colors)
-    sorted_colors = func(colors)
-    for i, color in enumerate(sorted_colors):
-        angle = 2 * math.pi * i / num_colors
-        x = center_x + radius * math.cos(angle)
-        y = center_y - radius * math.sin(angle)  # Minus to adjust for tkinter's upside-down coordinates
-        canvas.create_line(center_x, center_y, x, y, fill=f'#{int(color[0]*255):02x}{int(color[1]*255):02x}{int(color[2]*255):02x}')
+# Création de la fenêtre
+window = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
+pygame.display.set_caption("Tri du spectre de couleur")
 
-def update_selection(*args):
-    # Fonction appelée lorsque la sélection est mise à jour
-    selected_option.set(var.get())
+def hsv_to_rgb(h):
+    """
+    get HSV color and return RGB color. 
+    h = num between 0 and 360 for the color id 
+    """
+    r, g, b = colorsys.hsv_to_rgb(h / 360.0, 1, 1)
+    return int(r * 255), int(g * 255), int(b * 255)
 
-# Création de la fenêtre principale
-def test():
-    print("helloworld")
-# Options de la liste déroulante
-options = ["MergeSort" , "QuikSort" , "SelectionSort" , "test"]
+h = 0 
 
-functions = [MergeSort , QuikSort , SelectionSort,test]
+print("Couleur RGB:", hsv_to_rgb(h))
 
-# Variable de contrôle pour stocker la sélection
-var = tkinter.StringVar(app)
-var.set(options[0])  # Sélection par défaut
+def color_circle():
+    colors = list(range(361))
+    random.shuffle(colors)
+    y=300
+    x=450
+    i=0
+    print(colors)
+    SelectionSort(colors)
+    print(colors)
+    for color in colors:
+        pygame.draw.line(window,hsv_to_rgb(color),(400,300) , (x ,y))
+        i+=1
+        if i < 90:
+            y+=1
+            x-=1
+            
+        elif 360/4 < i < 360/4*2:
+            y-=1
+            x-=1
+            
+        elif 360/4*2 < i < 360/4*3:
+            y-=1
+            x+=1
+        elif 360/4*3 < i < 360/4*4:
+            
+            y+=1
+            x+=1
+    
+        
 
-# Bouton pour afficher la sélection
-selected_option = tkinter.StringVar(app)
-selected_option.set(var.get())  # Initialisation du texte du bouton avec la sélection par défaut
-button = tkinter.Button(app, textvariable=selected_option, state="disabled")
-button.pack()
 
-def execute_selected_function(*args,func):
-    selected_index = options.index(var.get())
-    draw_circle[selected_index](canvas, 200, 200, 150, 1000,functions)
+pygame.init()
+window.fill((255, 255, 255))
+color_circle()
 
-# Création de la liste déroulante
-dropdown = tkinter.OptionMenu(app, var, *options, command=execute_selected_function)
-dropdown.pack()
-# Lancement de la boucle principale Tkinter
+pygame.display.flip()
 
-app.mainloop()
+
+running = True
+while running:
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+   
+
+
+    pygame.display.flip()
+    pygame.time.Clock().tick(60)
+
+
+# Quitter Pygame
+pygame.quit()
+sys.exit()
+
+
