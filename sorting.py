@@ -1,3 +1,4 @@
+listes = [4, 13, 11, 6, 9, 7 ,10, 12, 1, 5, 15, 3, 8, 14,2]
 #1.MergeSort
 def merge(left, right):
     result = []
@@ -34,7 +35,8 @@ def QuikSort(list):
     left = [x for x in list if x < pivot]
     middle = [x for x in list if x == pivot]
     right = [x for x in list if x > pivot]
-    return(QuikSort(left) + middle + QuikSort(right))
+    list=(QuikSort(left) + middle + QuikSort(right))
+    return list
 
 #3.SelectionSort
 def SelectionSort(list):
@@ -54,3 +56,6 @@ def SelectionSort(list):
 
             selection = [list[0]]
     return list
+
+QuikSort(listes)
+print(listes)
