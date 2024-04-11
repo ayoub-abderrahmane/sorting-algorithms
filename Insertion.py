@@ -3,11 +3,9 @@ class Insertion():
         self.list = liste
         self.len_list = len(self.list)
     
-    def check_numbers(self):
-        pass
 
     def sorting(self):
-        print ("Initial list : " ,self.list)
+        # print ("Initial list : " ,self.list)
         for i in range(self.len_list):
             key = self.list[i]
             j = i - 1
@@ -15,7 +13,7 @@ class Insertion():
                 self.list[j+1] = self.list[j]
                 j -= 1
                 self.list[j+1] = key
-        print(self.list)
+        return self.list
 
 
 

@@ -25,11 +25,6 @@ class Peigne:
 
         return self.list
 
-    def sorting(self):
-        print("Initial list:", self.list)
-        self.comb_sort()
-        print(self.list)
-
 
 pei = Peigne([5, 3, 2, 1, 4, 8, 6, 9, 7, 10])
-pei.sorting()
+print (pei.comb_sort())

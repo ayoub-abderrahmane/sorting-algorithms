@@ -4,7 +4,7 @@ class Bulles():
         self.len_list = len(self.list) # Take the len of the list
     
     def sorting(self):
-        print ("Initial list : " ,self.list) # Print the list before sorting
+        # print ("Initial list : " ,self.list) # Print the list before sorting
         verif = True
         j = 0
         while verif:
@@ -15,7 +15,7 @@ class Bulles():
                     self.list[i], self.list[i+1] = self.list[i+1], self.list[i]
                     verif = True
 
-        print(self.list)
+        return self.list
 
 
 
