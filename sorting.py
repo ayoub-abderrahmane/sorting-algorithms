@@ -94,3 +94,37 @@ def heap_sort(array):
         heapify(array, i, 0)
 
     return array
+
+#6. insertion sort 
+def insertion_sort(liste):
+    len_list = len(liste)
+    for i in range(len_list):
+        key = liste[i]
+        j = i - 1
+        while j >= 0 and liste[j] > key:
+            liste[j + 1] = liste[j]
+            j -= 1
+            liste[j + 1] = key
+    return liste
+
+#7.comb sort 
+def comb_sort(liste):
+    len_list = len(liste)
+    gap = len_list
+    shrink = 1.3
+    sorted = False
+
+    while not sorted:
+        gap = int(gap / shrink)
+        if gap <= 1:
+            gap = 1
+            sorted = True
+
+        i = 0
+        while i + gap < len_list:
+            if liste[i] > liste[i + gap]:
+                liste[i], liste[i + gap] = liste[i + gap], liste[i]
+                sorted = False
+            i += 1
+
+    return liste

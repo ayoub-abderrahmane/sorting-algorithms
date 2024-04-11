@@ -100,8 +100,9 @@ def message(size,message,message_rectangle,color):
 def main():
     rectangle_displayed = False
     running = True
-    sorting=[SelectionSort,MergeSort,QuikSort,bubble_sort,heap_sort]
-    sortingMessage=["SelectionSort","MergeSort","QuikSort","bubble_sort","heap_sort"]
+    sorting=[SelectionSort,MergeSort,QuikSort,bubble_sort,heap_sort,comb_sort,insertion_sort]
+    sortingMessage=["SelectionSort","MergeSort","QuikSort","bubble_sort","heap_sort","comb_sort","insertion_sort"]
+    
     total_time=0
     element_number=360
     while running:
@@ -142,8 +143,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
-
-
