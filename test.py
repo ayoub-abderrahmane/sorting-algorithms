@@ -3,6 +3,8 @@ import colorsys
 import pygame
 import sys
 import random
+import time
+
 
 # Initialisation de Pygame
 pygame.init()
@@ -27,7 +29,7 @@ def hsv_to_rgb(h):
 
 h = 0 
 
-print("Couleur RGB:", hsv_to_rgb(h))
+# print("Couleur RGB:", hsv_to_rgb(h))
 
 def color_circle_without_sort(xi,yi):
     colors = list(range(361))
@@ -55,15 +57,17 @@ def color_circle_without_sort(xi,yi):
             x+=1
 
 def color_circle(xi,yi,sort):
+    starting=time.time()
     colors = list(range(361))
     random.shuffle(colors)
     y=300
     x= xi+50
     i=0
-    print(colors)
-    colors = QuikSort(colors)
-    print(colors)
+    # print(colors)
+    colors = sort(colors)
+    # print(colors)
     for color in colors:
+        pygame.display.flip()
         pygame.draw.line(window,hsv_to_rgb(color),(xi,yi) , (x ,y))
         i+=1
         if i < 90:
@@ -81,6 +85,10 @@ def color_circle(xi,yi,sort):
             
             y+=1
             x+=1
+    ending=time.time()
+    total_time= (ending - starting)
+    print(sort,":",total_time)
+    
 
 def message(size,message,message_rectangle,color):
     font=pygame.font.SysFont("arial",size)
@@ -93,6 +101,7 @@ circle_displayed = False
 running = True
 sorting=[SelectionSort,MergeSort,QuikSort]
 sortingMessage=["SelectionSort","MergeSort","QuikSort"]
+total_time=0
 while running:
     # Gestion des événements
     for event in pygame.event.get():
@@ -116,8 +125,11 @@ while running:
                     for i in sorting:
                         color_circle(xi,yi,i)
                         message(24,f"{sortingMessage[m]}",(xi-75,yi+100,0,0),(255,255,255))
+                        message(24,f"{total_time}",(xi-75,yi+135,0,0),(255,255,255))
                         xi+=180
                         m+=1
+                        
+                        
                 
     # Mise à jour de l'affichage
     pygame.display.flip()
