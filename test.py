@@ -99,8 +99,8 @@ circle_displayed = False
 
 # Boucle principale
 running = True
-sorting=[SelectionSort,MergeSort,QuikSort]
-sortingMessage=["SelectionSort","MergeSort","QuikSort"]
+sorting=[SelectionSort,MergeSort,QuikSort,bubble_sort,heap_sort]
+sortingMessage=["SelectionSort","MergeSort","QuikSort","bubble_sort","heap_sort"]
 total_time=0
 while running:
     # Gestion des événements
