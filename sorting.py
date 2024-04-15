@@ -54,19 +54,23 @@ def SelectionSort(list):
     return list
 
 #4. BubbleSort
-def bubble_sort(array):
-    swapped = True
-    pass_num = 0
-    while swapped:
-        swapped = False
-        pass_num += 1
-        for current_index in range(0, len(array) - pass_num):
-            if array[current_index] > array[current_index + 1]:
-                swapped = True
-                # Swap the two elements
-                array[current_index], array[current_index + 1] = \
-                array[current_index + 1], array[current_index]
-    return array
+def bulles_sort(liste):
+    len_list = len(liste) # Prend la longueur de la liste
+    
+    
+    verif = True # Vérifie si des éléments ont été intervertit
+    j = 0 # Compte le nombre d'itération dans la boucle
+    while verif:
+        verif = False
+        j += 1
+        for i in range(0, len_list - j):
+            if liste[i] > liste[i+1]: # Compare le premier élément avec le second élément
+                liste[i], liste[i+1] = liste[i+1], liste[i] # Échanger les éléments
+                verif = True # Si un échange est effectué, le tri n'est pas encore terminé
+
+    return liste # renvoie la liste trié
+
+
 #5.heap_sort
 def heap_sort(array):
     def heapify(array, n, i):
